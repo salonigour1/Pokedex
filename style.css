@@ -1,0 +1,135 @@
+* {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: 'Roboto', sans-serif;
+}
+body {
+}
+.heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 15vh;
+  background-color: #112233;
+  color: white;
+  font-size: 3rem;
+  padding: 1rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 3rem;
+}
+.card {
+  box-sizing: border-box;
+  height: 6.8rem;
+  width: 20rem;
+  background-color: rgb(197, 188, 188);
+  border: 0.1rem solid black;
+  border-radius: 1rem;
+  padding: 0.4rem;
+  text-align: center;
+  box-shadow: 5px 5px 8px black;
+  margin: 2rem;
+  transition: transform 0.5s;
+  /* margin: auto; */
+}
+.card:hover {
+  transform: scale(1.1);
+}
+.card p {
+  font-size: 2rem;
+  margin-bottom: 0.6rem;
+  text-transform: uppercase;
+}
+.card button {
+  box-sizing: border-box;
+  padding: 5px;
+  outline: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  border-radius: 2px;
+  background-color: #29435c;
+  border: none;
+  color: white;
+  box-shadow: 5px 5px 8px black;
+  font-weight: bold;
+}
+.card button:hover {
+  background-color: white;
+  color: black;
+}
+.main {
+  display: flex;
+  margin: 1rem;
+  flex-wrap: wrap;
+  padding: 1rem;
+  justify-content: start;
+  align-content: flex-start;
+  /* align-content: center; */
+}
+
+.details {
+  box-sizing: border-box;
+  text-align: center;
+  width: 20rem;
+  height: 30rem;
+  background-color: black;
+  overflow: hidden;
+  padding: 2rem;
+  border-radius: 1rem;
+  color: white;
+  box-shadow: 0.2rem 0.2rem 0.5rem grey;
+  border: 1px solid white;
+  position: fixed;
+  display: none;
+  top: 10%;
+  left: 40%;
+}
+.active {
+  display: block;
+}
+.details img {
+  box-sizing: border-box;
+  width: 12rem;
+  height: 12rem;
+  background-position: cover;
+  border: 5px double white;
+  box-shadow: 0.3rem 0.3rem 0.4rem rgb(101, 100, 100);
+  margin: 10px;
+}
+.details h1 {
+  color: white;
+  font-size: 40px;
+  padding: 10px;
+  padding-bottom: 20px;
+  text-transform: capitalize;
+}
+.details p {
+  font-size: 22px;
+  text-align: left;
+  margin: 10px;
+  text-transform: uppercase;
+}
+.cross {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+ion-icon {
+  font-size: 3rem;
+  color: white;
+  font-weight: bold;
+  --ionicon-stroke-width: 3rem;
+  cursor: pointer;
+}
+
+ion-icon:hover {
+  color: black;
+  background-color: white;
+  padding: 2px;
+}
+
+.overlay {
+  filter: blur(22px);
+}
