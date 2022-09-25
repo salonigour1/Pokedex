@@ -1,31 +1,19 @@
 let output = '';
 const demo = document.querySelector('.main');
-const pages = document.querySelectorAll('.page');
-getData(0);
-Pagination();
+const pages_container = document.querySelector('.pagination');
 
-//---------------------pagination---------------------------
-function Pagination() {
-  pages.forEach((entries, index) => {
-    entries.addEventListener('click', () => {
-      removeActiveBtn();
-      entries.classList.add('btn-active');
-      let offset_val = 15 * index;
-      getData(offset_val);
-    });
+fetch(`https://pokeapi.co/api/v2/pokemon/?offset=0&limit=21`)
+  .then(response => response.json())
+  .then(data => {
+    createPages(data.count);
   });
-  function removeActiveBtn() {
-    pages.forEach((entry, index) => {
-      entry.classList.remove('btn-active');
-    });
-  }
-}
+getData(0);
+
 //----------------------getData--------------------------------
 function getData(offset_val) {
-  fetch(`https://pokeapi.co/api/v2/pokemon/?offset=${offset_val}&limit=15`)
+  fetch(`https://pokeapi.co/api/v2/pokemon/?offset=${offset_val}&limit=21`)
     .then(response => response.json())
     .then(data => {
-      demo.innerHTML = '';
       output = '';
       for (let i = 0; i < data.results.length; i++) {
         let item = data.results;
@@ -40,6 +28,37 @@ function getData(offset_val) {
       demo.innerHTML = '';
       demo.innerHTML = output;
     });
+}
+//-----------------------pages------------------------
+function createPages(total_data) {
+  let createbtn = '';
+  total_pages = Math.trunc(total_data / 21);
+  for (let i = 1; i <= total_pages; i++) {
+    createbtn += `
+      <div class="page">${i}</div>
+      `;
+  }
+  pages_container.innerHTML = createbtn;
+  const pages = document.querySelectorAll('.page');
+  pages[0].classList.add('btn-active');
+  Pagination();
+}
+
+//---------------------pagination---------------------------
+
+function Pagination() {
+  const pages = document.querySelectorAll('.page');
+  console.log(pages);
+  pages.forEach((entries, index) => {
+    entries.addEventListener('click', () => {
+      pages.forEach(entry => {
+        entry.classList.remove('btn-active');
+      });
+      entries.classList.add('btn-active');
+      let offset_val = 21 * index;
+      getData(offset_val);
+    });
+  });
 }
 
 //---------------------more details card-----------------------------------------
@@ -64,7 +83,7 @@ function moreDetails(url) {
     });
 }
 
-//----------------open and close detail box-------------------
+//----------------open and close detail_box-------------------
 function openClose() {
   const box = document.querySelector('.details');
   const conatiner = document.querySelector('.container');
